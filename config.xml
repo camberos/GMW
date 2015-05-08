@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.mobile.gmwater" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Goulburn Murray Water</name>
+    <description>
+        Goulburn Murray Water (GMW) stores, manages and delivers water across most of Northern Victoria.The GMW app provides up-to-date information on how much water is in GMW storages and allows customers to order water and confirm irrigation times. For more information about GMW visit www.g-mwater.com.au
+    </description>
+    <author email="reception@g-mwater.com.au" href="http://www.g-mwater.com.au">
+        Goulburn Murray Water
+    </author>
+    
+
+    <content src="index.html" />
+    <access origin="*" browserOnly="true"/>
+    <gap:plugin name="org.apache.cordova.inappbrowser"/>
+    <gap:plugin name="org.apache.cordova.geolocation" />
+    
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.InAppBrowser"/>
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
+</widget>

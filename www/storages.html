@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>G-MW Mobile: Storage Levels</title>
+   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+   <script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/app.css" />
+
+   <script type="text/javascript">
+       $(document).ready(function () {
+
+           if (checkLocalStorageDate('StorageList') != 'current' || getLocalStorage('StorageList') == 'null' || typeof (Storage) == "undefined") {
+               $.ajax({
+                   type: "GET",
+                   url: "http://www.g-mwater.com.au/storages/mobilestorages.asp",
+                   //url: "storage-ajax.html", //local file for testing
+                   success: function (data) {
+                       $('#StorageList').html(data);
+                       //sort list alphabetically
+                       $('#StorageList ul li').sort(sortAlpha).appendTo('#StorageList ul');
+                       //local storage
+                       setLocalStorage('StorageList', data);
+                       setLocalStorageDate('StorageList');
+
+                   },
+                   error: function (request, status, error) {
+                       $('.loading').remove();
+                       if (getLocalStorage('StorageList')) {
+                           $('#StorageList').html(getLocalStorage('StorageList'));
+                           $('#StorageList ul li').sort(sortAlpha).appendTo('#StorageList ul');
+                       } else {
+                           $('<p>Sorry there was a problem loading this page, please try again later</p>').appendTo('#StorageList');
+                       }
+                   }
+
+               });
+           } else {
+               $('#StorageList').html(getLocalStorage('StorageList'));
+               //sort list alphabetically
+               $('#StorageList ul li').sort(sortAlpha).appendTo('#StorageList ul');
+
+           }
+
+       })
+		function sortAlpha(a,b){
+		    return jQuery.trim($(a).text()).toLowerCase() > jQuery.trim($(b).text()).toLowerCase() ? 1 : -1;
+		};
+
+   </script>
+
+</head>
+	<body>
+	<div class="toolbar">
+        <h1 id="pageTitle">Storage Levels</h1>
+        <a id="backButton" class="button" href="index.html">Home</a>
+    </div>
+	<div class="smallBanner">
+        <img src="images/logo-home.png" alt="Goulburn-Murray Water" />
+	</div>
+   <div id="StorageList" selected="true" class="panel"><div class="loading">Loading...</div></div>
+   <!--Start Google Analytics tracking code-->
+
+    <script type="text/javascript" src="http://www.g-mwater.com.au/App_Assets/Javascript/gatrack.js"></script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        var pageTracker = _gat._getTracker('UA-5707092-1');
+        pageTracker._initData();
+        pageTracker._trackPageview();
+    </script>
+
+    <!--End Google Analytics tracking code-->
+</body>
+</html>

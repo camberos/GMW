@@ -1,0 +1,940 @@
+/*
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+
+
+body {
+    margin: 0;
+    font-family: Helvetica;
+    background: #FFFFFF;
+    color: #000000;
+    overflow-x: hidden;
+    -webkit-user-select: none;
+	min-height: 460px;
+	/*prevent font resizing on device rotation*/
+    -webkit-text-size-adjust:none;
+}
+body > .toolbar {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border-bottom: 1px solid #2d3642;
+    border-top: 1px solid #6d84a2;
+    padding: 0 10px 10px 10px;
+    height: 45px;
+	background: url(../images/toolbar.png) #6d84a2 repeat-x;
+}
+
+.toolbar > h1 {
+    position: absolute;
+    overflow: hidden;
+    left: 50%;
+    margin: 1px 0 0 -75px;
+    padding-top: 10px;
+    height: 45px;
+    font-size: 20px;
+    width: 150px;
+    font-weight: bold;
+    text-shadow: rgba(0, 0, 0, 0.4) 0px -1px 0;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #FFFFFF;
+}
+
+body.landscape > .toolbar > h1 {
+    margin-left: -125px;
+    width: 250px;
+}
+
+.button {
+    position: absolute;
+    overflow: hidden;
+    top: 8px;
+    right: 6px;
+    margin: 0;
+    border-width: 0 5px;
+    padding: 0 3px;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    white-space: nowrap;
+    -webkit-border-image: url(../images/toolButton.png) 0 5 0 5;
+    -moz-border-image: url(../images/toolButton.png) 0 5 0 5;
+}
+
+.whiteButton,
+.redButton,
+.grayButton {
+    display: block;
+    border-width: 0 12px;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: inherit;
+    color: inherit;
+}
+.grayButton {
+    -webkit-border-image: url(../images/grayButton.png) 0 12 0 12;
+    -moz-border-image: url(../images/grayButton.png) 0 12 0 12;
+    color: #FFFFFF;
+  
+}
+
+.blueButton {
+    border-width: 0 5px;
+	 -webkit-border-image: url(../images/blueButton.png) 0 5 0 5;
+    -moz-border-image: url(../images/blueButton.png) 0 5 0 5;
+}
+
+.whiteButton {
+    -webkit-border-image: url(../images/whiteButton.png) 0 12 0 12;
+    -moz-border-image: url(../images/whiteButton.png) 0 12 0 12;
+    text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
+}
+
+.leftButton {
+    left: 6px;
+    right: auto;
+}
+
+#backButton {
+    left: 6px;
+    right: auto;
+    padding: 0;
+    max-width: 55px;
+    border-width: 0 8px 0 14px;
+	-webkit-border-image: url(../images/backButtonBrdr.png) 0 8 0 14;
+    -moz-border-image: url(../images/backButtonBrdr.png) 0 8 0 14;
+    background: url(../images/backButtonBack.png) repeat-x;
+}
+
+body {
+	background: #00a5ee;
+}
+.smallBanner {
+	background: url(../images/g-mw_banner.png) no-repeat top center;
+	width: 100%;
+	height: 51px;
+	position: relative;
+}
+/*individual pages*/
+
+.homeScreen {
+	/*background: #004787 url(.../images/home_background.jpg) no-repeat;
+	background-size: 100%;*/
+	text-align: center;
+	/*width: 310px;*/
+	margin: 0 auto;
+	padding: 0;
+}
+	.homeScreen .largeBanner {
+		background: url(../images/home_banner.png) no-repeat top center;
+		width: 100%;
+		height: 79px;
+	}
+	    .homeScreen .largeBanner img, .smallBanner img {
+	        position: absolute;
+	        top: 8px;
+	        left: 8px;   
+	    }
+	.homeScreen .buttonGroup {
+		position: absolute;
+		left: 50%;
+		margin-left: -137px;
+	}
+	.homeScreen #HomeButtons {
+		margin: 0 auto;
+		padding: 0;
+		width: 275px;
+		font-size: 20px;
+	}
+		#HomeButtons li {
+			list-style: none;
+		}
+			#HomeButtons a {
+				text-align: left;
+				display: block;
+				width: 211px;
+				padding: 7px 0 7px 57px;
+				margin-bottom: 5px;
+				border: 3px solid #282a2f;
+				border-radius: 8px;
+				background: #002b58 url(../images/home_button_blue_gradient.gif) repeat-x;
+				color: #ffffff;
+				font-weight: bold;
+				text-decoration: none;
+			}
+			#HomeButtons li:nth-child(1) a{
+				background: url(../images/storage_levels_icon.png) 10px 3px no-repeat, url(../images/home_button_blue_gradient.gif) 0 0 repeat-x;
+			}
+			#HomeButtons li:nth-child(2) a{
+				background: url(../images/waterline_icon.png) 10px 3px no-repeat, url(../images/home_button_blue_gradient.gif) 0 0 repeat-x;
+			}
+			#HomeButtons li:nth-child(3) a{
+				background: url(../images/online_payments_icon.png) 10px 3px no-repeat, url(../images/home_button_blue_gradient.gif) 0 0 repeat-x;
+			}
+			
+		#AppLinks {
+			margin: 0 auto;
+			padding: 0;			
+			width: 275px;
+			font-size: 68.75%;
+		}
+			#AppLinks li {
+				list-style: none;
+			}
+				#AppLinks  a {
+					display: block;
+					width: 120px;
+					text-align: center;
+					color: #000000;
+					float: left;
+					background: #e5e5e6 url(../images/home_button_grey_gradient.gif) repeat-x left bottom;
+					border: 1px solid #2f3238;
+					border-radius: 6px;
+					padding: 4px 0;
+					text-decoration: none;
+					font-weight: bold;
+					margin-bottom: 10px;
+				}
+				#AppLinks li:nth-child(1) a {
+					margin-right: 30px;
+				}
+				
+/*storage list page*/
+#StorageList {
+	background: none repeat scroll 0 0 #ffffff;
+    border-radius: 10px 10px 10px 10px;
+    border: 1px solid #bbbbbb;
+    font-size: 14px;
+	margin: 30px 2%;
+}
+#StorageList ul {
+	margin: 0;
+	padding: 0;
+}
+	#StorageList li {
+		background: url("../images/listArrow.png") no-repeat scroll 96.3% 1.15em transparent;
+		list-style: none outside none;
+	}
+		#StorageList a {
+			border-bottom: 1px solid #bbbbbb;
+		    color: #040404;
+		    display: block;
+		    font-weight: bold;
+		    padding: 12px 11px 13px;
+		    text-decoration: none;
+		}
+		p.lastupdateddate-storage {
+			font-size: 80.7%;
+			padding-left: 13px;
+		}
+		
+/*storage detail page*/
+.storageDetail {
+    background: #00a5ee;   
+}		
+#StorageDetail {
+    background: #00a5ee;
+    padding: 30px 2%;
+}
+@media all and (orientation: portrait) {
+        body.CAIRN #StorageDetail {
+        background: #00a5ee url(../images/cairn_curran_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.DARTMOUTH #StorageDetail {
+        background: #00a5ee url(../images/dartmouth_dam_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.GOULBURN #StorageDetail {
+        background: #00a5ee url(../images/goulburn_weir_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.GREENS #StorageDetail {
+        background: #00a5ee url(../images/greens_lake_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.HEPBURNS #StorageDetail {
+        background: #00a5ee url(../images/storage_generic_background_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.HUME #StorageDetail {
+        background: #00a5ee url(../images/hume_dam_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.KANGAROO #StorageDetail {
+        background: #00a5ee url(../images/storage_generic_background_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.KOW #StorageDetail {
+        background: #00a5ee url(../images/storage_generic_background_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.LAANECOORIE #StorageDetail {
+        background: #00a5ee url(../images/laancoorie_resevoir_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.BUFFALO #StorageDetail {
+        background: #00a5ee url(../images/lake_buffalo_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.EILDON #StorageDetail {
+        background: #00a5ee url(../images/lake_eildon_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.EPPALOCK #StorageDetail {
+        background: #00a5ee url(../images/lake_eppalock_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.nillahcootie #StorageDetail {
+        background: #00a5ee url(../images/lake_nillahcootie_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.WILLIAM #StorageDetail {
+        background: #00a5ee url(../images/william_hovell_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.NEWLYN #StorageDetail {
+        background: #00a5ee url(../images/newlyn_resevoir_portrait.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.REEDY #StorageDetail {
+        background: #00a5ee url(../images/storage_generic_background_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.THIRD #StorageDetail {
+        background: #00a5ee url(../images/storage_generic_background_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.TORRUMBARRY #StorageDetail {
+        background: #00a5ee url(../images/torrumbarry_weir_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.TULLAROOP #StorageDetail {
+        background: #00a5ee url(../images/tullaroop_reservoir_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.TULLAROOP #StorageDetail {
+        background: #00a5ee url(../images/tullaroop_reservoir_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.WARANGA #StorageDetail {
+        background: #00a5ee url(../images/waranga_basin_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.MULWALA #StorageDetail {
+        background: #00a5ee url(../images/yarrawonga_weir_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+
+
+}
+@media all and (orientation: landscape) { 
+    body.CAIRN #StorageDetail {
+        background: #00a5ee url(../images/cairn_curran_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.DARTMOUTH #StorageDetail {
+        background: #00a5ee url(../images/dartmouth_dam_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.GOULBURN #StorageDetail {
+        background: #00a5ee url(../images/goulburn_weir_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.GREENS #StorageDetail {
+        background: #00a5ee url(../images/greens_lake_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.HEPBURNS #StorageDetail {
+        background: #00a5ee url(../images/storage_generic_background_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.HUME #StorageDetail {
+        background: #00a5ee url(../images/hume_dam_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.KANGAROO #StorageDetail {
+        background: #00a5ee url(../images/storage_generic_background_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.KOW #StorageDetail {
+        background: #00a5ee url(../images/storage_generic_background_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.LAANECOORIE #StorageDetail {
+        background: #00a5ee url(../images/laancoorie_resevoir_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.BUFFALO #StorageDetail {
+        background: #00a5ee url(../images/lake_buffalo_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.EILDON #StorageDetail {
+        background: #00a5ee url(../images/lake_eildon_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.EPPALOCK #StorageDetail {
+        background: #00a5ee url(../images/lake_eppalock_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.nillahcootie #StorageDetail {
+        background: #00a5ee url(../images/lake_nillahcootie_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.WILLIAM #StorageDetail {
+        background: #00a5ee url(../images/william_hovell_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.NEWLYN #StorageDetail {
+        background: #00a5ee url(../images/newlyn_resevoir_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.REEDY #StorageDetail {
+        background: #00a5ee url(../images/storage_generic_background_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.THIRD #StorageDetail {
+        background: #00a5ee url(../images/storage_generic_background_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.TORRUMBARRY #StorageDetail {
+        background: #00a5ee url(../images/torrumbarry_weir_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.TULLAROOP #StorageDetail {
+        background: #00a5ee url(../images/tullaroop_reservoir_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.WARANGA #StorageDetail {
+        background: #00a5ee url(../images/waranga_basin_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+    body.MULWALA #StorageDetail {
+        background: #00a5ee url(../images/yarrawonga_weir_landscape.jpg) no-repeat;
+        background-size: 100%;
+    }
+}
+    #StorageDetail h2 {
+        color: #ffffff;
+        font-size: 20px; 
+        margin-bottom: 0;  
+        margin-top: 0;
+        margin-left: 15px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+    #StorageDetail p.lastupdateddate-storage {
+        font-size: 17px;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 15px; 
+        margin-left: 15px;  
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    }
+    #StorageDetail .summaryDetails {
+        padding: 15px;
+        margin-top: 20px;
+        background: rgba(255,255,255,0.8);
+        border-radius: 20px;
+        min-width: 280px;   
+    }
+        #StorageDetail .summaryDetails ul {
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            color: #00498d;   
+        }
+            #StorageDetail .summaryDetails li {
+                list-style: none;
+                margin-bottom: 10px;   
+            }
+            #StorageDetail .summaryDetails li:last-child {
+                margin-bottom: 0;   
+            }
+            /*classes added by js - see storagedetail.html*/
+            #StorageDetail .summaryDetails li:last-child.up {
+                background: url(../images/up_arrow.gif) no-repeat 82px 5px;
+            }
+            #StorageDetail .summaryDetails li:last-child.down {
+                background: url(../images/down_arrow.gif) no-repeat 82px 5px;
+            }
+                #StorageDetail .summaryDetails li span.valuemetric {
+                    font-weight: bold;
+                    margin-right: 4px;   
+                    width: 124px;
+                    display: inline-block;
+                }
+                    #StorageDetail .summaryDetails li span.valuemetric span {
+                        display: inline-block;
+                    }
+                
+                
+      #StorageDetail h3 {
+        color: #ffffff;
+        font-size: 18px; 
+        margin-bottom: 0;  
+        }
+            #StorageDetail .additionalDetails {
+                padding: 15px;
+                margin-top: 20px;
+                background: rgba(255,255,255,1);
+                border-radius: 20px;
+                min-width: 280px;   
+            }
+                #StorageDetail .additionalDetails ul {
+                    margin: 0;
+                    padding: 0;   
+                }
+                    #StorageDetail .additionalDetails li {
+                        list-style: none;
+                        margin-bottom: 10px;
+                        border-bottom: 1px solid #bbb;
+                        padding-bottom: 10px;   
+                    }
+                        #StorageDetail .additionalDetails li span.valuemetric {
+                            font-weight: bold;
+                            width: 124px;
+                            display: inline-block;
+                            vertical-align: top;
+                        }
+                        #StorageDetail .additionalDetails li span.label {
+                            display: inline-block;
+                            vertical-align: top;
+                            width: 140px;
+                        }
+      #StorageDetail .additionalDetails h4 {
+        text-align: center;   
+      }
+      #StorageGraph {
+            font-size: 11px;  
+            width: 205px;
+            margin: 0 auto;
+      }
+	    #StorageGraph td {
+	        padding-right: 10px;   
+	        text-align: center;
+	    }
+	    #StorageGraph td:last-child {
+	        padding-right: 0;
+	    }
+	  /*save as favourite button*/
+	  .favouriteButton {
+
+		display: block;
+		
+		margin: 0;
+		margin-left: 15px;
+        border-width: 0 5px;
+        padding: 0 3px;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: bold;
+        color: #FFFFFF;
+        text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0;
+        text-overflow: ellipsis;
+        text-decoration: none;
+        white-space: nowrap;
+        -webkit-border-image: url(../images/toolButtonTransparent.png) 0 5 0 5;
+        -moz-border-image: url(../images/toolButtonTransparent.png) 0 5 0 5;
+        background: transparent;
+	  }
+	  
+/*waterline*/
+body.waterLine {
+    background: url(../images/waterline-bottom-bg.png) no-repeat center bottom, url(../images/waterline_bg_gradient.gif) repeat-x left top;
+    background-color: #8bd3fe;
+}
+
+@media all and (orientation: portrait) {
+    body.waterLine {
+        background: url(../images/waterline-bottom-bg.png) no-repeat center 350px, url(../images/waterline_bg_gradient.gif) repeat-x left top;
+        background-color: #8bd3fe;
+    }
+}
+@media all and (orientation: landscape) {  
+    body.waterLine {
+        background: url(../images/waterline-bottom-bg.png) no-repeat center 210px, url(../images/waterline_bg_gradient.gif) repeat-x left top;
+        background-color: #8bd3fe;
+    }
+}
+
+    body.waterLine h2 {
+        color: #ffffff;
+        font-size: 20px;   
+        
+    }
+    body.waterLine .formPanel {
+        margin: 0 auto;
+        width: 270px;
+    }
+    body.waterLine form ol {
+        margin: 0;
+        padding: 0;   
+    }
+    body.waterLine form li {
+        list-style: none;
+        background: none repeat scroll 0 0 rgba(255, 255, 255, 1);
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    body.waterLine form li:nth-child(1) {
+        border-radius: 12px 12px 0 0; 
+        border: 1px solid #bbbbbb;  
+    }
+    body.waterLine form li:nth-child(2) {
+        border-radius: 0 0 12px 12px;   
+        border: 1px solid #bbbbbb;  
+        border-top: 0px;
+    }
+    body.waterLine form li:nth-child(3) {
+        background: transparent;   
+        padding-right: 0;
+    }
+        body.waterLine form label {
+            font-weight: bold;
+            width: 112px;   
+            display: inline-block;
+            font-size: 17px;
+        }
+        body.waterLine input[type="password"], body.waterLine input[type="number"] {
+            border-radius: 4px;
+            border: 1px solid #ebebeb;
+            width: 105px;
+            display: inline-block;
+        }
+        body.waterLine input[type="submit"] {
+            margin: 0;
+            border-width: 0 5px;
+            padding: 0 3px;
+            width: auto;
+            height: 30px;
+            line-height: 30px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0;
+            text-overflow: ellipsis;
+            text-decoration: none;
+            white-space: nowrap;
+            -webkit-border-image: url(../images/toolButtonTransparent.png) 0 5 0 5;
+            -moz-border-image: url(../images/toolButtonTransparent.png) 0 5 0 5;
+            background: transparent;
+            float: right;
+        }
+		
+/*contact*/
+
+.mainPanel {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 1);
+    border-radius: 20px 20px 20px 20px;
+    margin: 40px 2%;
+    min-width: 280px;
+    padding: 15px;
+    font-size: 14px;
+}
+    .mainPanelInner {
+        margin: 0 auto;
+        width: 270px;   
+    }
+	.mainPanel h3 {
+		margin: 0 0 0.25em;
+	}
+    .mainPanel .vcard {
+        margin-bottom: 10px;   
+    }
+    .mainPanel iframe {
+        margin-bottom: 20px;   
+    }
+    .mainPanel .fn {
+        display: inline-block;
+            font-weight: bold;   
+    }
+        .mainPanel .vcard:first-child .fn {
+            font-weight: bold;   
+        }
+    .mainPanel .tel {
+        display: block;
+    }
+        .mainPanel .tel .type {
+            display: none;
+        }
+        .mainPanel .tel a {
+            text-decoration: none;
+            color: #00a5ee;
+            text-decoration: underline;
+        }
+    .mainPanel .adr {
+        display: block;
+    }
+        .mainPanel .street-address {
+            display: block;   
+        } 
+    .mainPanel .moreInfo {
+        display: inline-block;
+        margin: 0 0 1em;
+        background: #004786 url('./images/home_button_blue_gradient.gif') 0 -8px;
+        border-radius: 4px;
+    }
+        .mainPanel .moreInfo a {
+            display: inline-block;
+            color: #ffffff;
+            font-size: 91.7%;
+            font-weight: bold;
+            text-decoration: none;
+            background: url('./images/listArrowSel.png') right 2px no-repeat;
+            padding: 5px 48px 5px 8px;
+        }
+        
+ /*local contacts*/
+ .localContacts .mainPanel {
+     padding: 15px 0 0;
+ }
+    .localContacts .mainPanelInner {
+    padding: 0 15px 15px 15px;
+    }
+ 
+ .localContacts h2 {
+     font-size: 16px;
+ }
+    .localContacts h2 span {
+        display: block;
+    }
+    
+ .localContacts .vcard {
+     border-top: 1px solid;
+ }
+     .localContacts .mainPanel .vcard.first {
+         border: 0;
+     }
+         .localContacts .mainPanel .vcard.first .fn, .contactUs .mainPanel .vcard.first .fn {
+             margin: 0 0 10px 0;
+         }
+         
+         .contactUs .mainPanel .vcard.first .fn {
+             color: #6bae2e;
+         }
+ 
+ .localContacts .vcard .fn, .contactUs .vcard .fn {
+    display: block;
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: bold;
+    width: auto;   
+ }
+    .localContacts .vcard .fn span {
+        display: block;
+    }
+ .localContacts .vcard:nth-child(1n+4) .tel {
+    text-align: left;   
+ }
+ .localContacts .vcard:nth-child(1n+4) .adr {
+    text-align: left;   
+ }
+ .localContacts ul.menu {
+	margin: 0;
+	padding: 0;
+ }
+     .localContacts ul.menu li {
+		background: url("images/listArrow.png") no-repeat scroll 96.3% 1.15em transparent;
+		list-style: none outside none;
+     }
+         .localContacts ul.menu li a {
+			border-bottom: 1px solid #bbbbbb;
+		    color: #040404;
+		    display: block;
+		    font-weight: bold;
+		    padding: 12px 11px 13px;
+		    text-decoration: none;
+         }
+         .localContacts ul.menu li a span {
+             display: block;
+         }
+       
+ /*contact map*/
+ .contactMap .mainPanel {
+     border-radius: 0;
+     margin: 0;
+     padding: 0;
+     background: transparent;
+ }
+    .contactMap .mainPanel h3 {
+        display: none;
+    }
+    .contactMap .mainPanelInner {
+        width: 100%;
+
+    }
+    .contactMap .smallBanner {
+        display: none;
+    }
+ 
+ /*ajax loading message*/
+ .loading { 
+     background: #ffffff url(../images/ajax-loader.gif) no-repeat 10px 10px;
+     padding: 10px 10px 10px 30px;
+ }
+
+/*
+    IE7 / Windows Phone 7.0 Hacks
+*/
+
+
+*:first-child+html body.homeScreen {
+    padding-left: 0;
+    /*
+background-image: url(../images/home_background_landscape.jpg);
+        background-position: fixed;
+        background-repeat: no-repeat;
+*/
+}
+
+    *:first-child+html body.homeScreen .buttonGroup {
+        position: relative;
+        float: left;
+        left: 0;
+        margin-left: 0;
+    }
+
+        *:first-child+html body.homeScreen .buttonGroup ul#AppLinks {
+        }
+
+            *:first-child+html body.homeScreen .buttonGroup ul#AppLinks li {
+                display: inline;
+                position: relative;
+                float: left;
+            }
+            
+            *:first-child+html body.homeScreen .buttonGroup ul#AppLinks li#AppLinkWebsite {
+            }
+            
+            *:first-child+html body.homeScreen .buttonGroup ul#AppLinks li#AppLinkContact {
+                float: right;
+            }
+
+    *:first-child+html .toolbar .button {
+    }
+    
+    *:first-child+html #backButton {
+        padding-left: 10px;
+        padding-right: 10px;
+        background: url('./images/backButtonBack.png');
+        /* background: transparent url('./images/backButtonBrdr.png') no-repeat; */
+        border-left: #000000 1px solid;
+        border-right: #9cabc0 1px solid;
+    }
+    
+    *:first-child+html body.contactUs {
+    }
+    
+        *:first-child+html body.contactUs .mainPanel {
+            background: #ffffff;
+        }
+    
+    *:first-child+html body.localContacts {
+    }
+    
+        *:first-child+html body.localContacts .mainPanel {
+            background: #ffffff;
+        }
+    
+    *:first-child+html body.contactMap {
+        height: 100%;
+    }
+    
+        *:first-child+html body.contactMap .mainPanelInner {
+            height: 400px;
+        }
+    
+    *:first-child+html body.waterline {
+    }
+    
+        *:first-child+html body.waterline iframe {
+            display: none;
+        }
+        
+        #IE7Message {
+            display: none;
+        }
+        
+        *:first-child+html body.waterline #IE7Message {
+            display: block;
+        }
+        
+            *:first-child+html body.waterline #IE7Message p {
+                color: #ffffff;
+                margin: 1em 10px;
+            }
+
+            *:first-child+html body.waterline #IE7Message .waterlineLink {
+                display: inline-block;
+                padding: 8px 10px;
+                background: #ffffff;
+            }
+
+
+/*ajax loading message*/
+
+.mainPanel .fn {
+    color: #277fbe;
+}
+h3 {
+    color: #6bae2e !important;
+}
+
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+        .homescreen .largeBanner {
+        
+        }
+        .homeScreen .buttonGroup {
+            top: 600px;
+        }
+    }
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+        .homescreen .largeBanner {
+        
+        }
+        .homeScreen .buttonGroup {
+            top: 400px;
+        }
+    }
+	@media all and (orientation: portrait) {  
+	  body { 
+		background: url(../images/home_background_portrait.jpg) no-repeat;
+		background-size: 100%;
+		height: 480px;
+		}  
+		.buttonGroup {
+		    top: 240px;   
+		}
+	}  
+	  
+	@media all and (orientation: landscape) {  
+	  body { 
+		background: url(../images/home_background_landscape.jpg) no-repeat 0 0;
+		background-size: 100%;
+		height: 320px;
+		}  
+		.buttonGroup {
+		    top: 120px;   
+		}
+	  }

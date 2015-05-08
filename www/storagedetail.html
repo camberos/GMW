@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>G-MWater Mobile: Storage Levels</title>
+   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+   <script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/app.css" />
+
+   <script type="text/javascript">
+       $(document).ready(function () {
+
+           if (getCookie('FavStorage') == getParameterByName('storage')) {
+               $('#backButton').attr('id', 'nextButton');
+               $('<a>Home</a>').attr('href', 'index.html').attr('id', 'backButton').attr('class', 'button').insertAfter('#pageTitle');
+           }
+           //get storage from query string
+           var storageName = getParameterByName('storage');
+           var storageClassName = "";
+           if (storageName.indexOf('/') > -1) {
+               storageClassName = storageName.split('/')[0];
+           } else {
+               storageClassName = storageName;
+           }
+           $('body').addClass(storageClassName);
+//           if (checkLocalStorageDate('StorageDetail' + storageName) != 'current' || getLocalStorage('StorageDetail' + storageName) == 'null' || typeof (Storage) == "undefined") {
+               $.ajax({
+                   type: "GET",
+                   url: "http://www.g-mwater.com.au/storages/mobilestorages.asp?storage=" + storageName,
+                   //url: "individual-ajax.html", //local file for testing
+                   success: function (data) {
+                       $('#StorageDetail').html(data);
+                       fixUpPageElements();
+                       //local storage
+                       setLocalStorage('StorageDetail' + storageName, data);
+                       setLocalStorageDate('StorageDetail' + storageName);
+                   },
+                   error: function (request, status, error) {
+                       $('.loading').remove();
+                       if (getLocalStorage('StorageDetail')) {
+                           $('#StorageDetail').html(getLocalStorage('StorageDetail'));
+                           fixUpPageElements();
+                       } else {
+                           $('<p>Sorry there was a problem loading this page, please try again later</p>').appendTo('#StorageDetail');
+                       }
+                   }
+
+               });
+//           } else {
+//               $('#StorageDetail').html(getLocalStorage('StorageDetail' + storageName));
+//               fixUpPageElements();
+//           }
+
+
+           $('.favouriteButton').click(function () {
+               setCookie('FavStorage', getParameterByName('storage'), 30);
+               alert($('h2').text() + ' saved as favourite');
+               return false;
+           });
+
+       })
+       function fixUpPageElements() {
+            //add up down class depending on positive or negative value in weekly change li
+           if ($('.summaryDetails li:nth-child(3)').length > 0) {
+               if ($('.summaryDetails li:nth-child(3)').text().indexOf('-') > -1) {
+                   $('.summaryDetails li:nth-child(3)').addClass('down');
+               } else {
+                   $('.summaryDetails li:nth-child(3)').addClass('up');
+               }
+           }
+           //move favourite button
+           if ($('.lastupdateddate-storage').length > 0) {
+               $('.favouriteButton').insertAfter('.lastupdateddate-storage');
+           }
+
+           //take double decimal off Volume Same Time as Last Year
+           $('.additionalDetails li:nth-child(4) span.value').text($('.additionalDetails li:nth-child(4) span.value').text().split('.')[0]);
+
+           //add commas to values
+           var values = $('#StorageDetail').find('.value');
+           $.each(values, function () {
+               var value = $(this).text();
+               var commaValue = addCommas(value);
+               $(this).text(commaValue);
+           });
+
+       }
+   </script>
+
+</head>
+	<body class="storageDetail">
+	<div class="toolbar">
+        <h1 id="pageTitle">Storage Levels</h1>
+        <a id="backButton" class="button" href="storages.html">Storages</a>
+    </div>
+    <div class="smallBanner">
+        <img src="images/logo-home.png" alt="Goulburn-Murray Water" />
+	</div>
+   <a href="#" class="favouriteButton">Save as favourite</a>
+   <div id="StorageDetail" selected="true" class="panel"><div class="loading">Loading...</div></div>
+   <!--Start Google Analytics tracking code-->
+
+    <script type="text/javascript" src="http://www.g-mwater.com.au/App_Assets/Javascript/gatrack.js"></script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        var pageTracker = _gat._getTracker('UA-5707092-1');
+        pageTracker._initData();
+        pageTracker._trackPageview();
+    </script>
+
+<!--End Google Analytics tracking code-->
+
+</body>
+</html>
